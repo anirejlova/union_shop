@@ -56,12 +56,16 @@ class HomeScreen extends StatelessWidget {
                   // Top banner
                   Container(
                     width: double.infinity,
-                    padding: const EdgeInsets.symmetric(vertical: 8),
+                    padding:
+                        const EdgeInsets.symmetric(vertical: 8, horizontal: 10),
                     color: const Color(0xFF4d2963),
                     child: const Text(
-                      'PLACEHOLDER HEADER TEXT',
+                      'BIG SALE! OUR ESSENTIAL RANGE HAS DROPPED IN PRICE! OVER 20% OFF! COME GRAB YOURS WHILE STOCK LASTS!',
                       textAlign: TextAlign.center,
-                      style: TextStyle(color: Colors.white, fontSize: 16),
+                      style: TextStyle(
+                          color: Colors.white,
+                          fontSize: 16,
+                          fontWeight: FontWeight.w600),
                     ),
                   ),
                   // Main header
@@ -241,7 +245,91 @@ class HomeScreen extends StatelessWidget {
                 child: Column(
                   children: [
                     const Text(
-                      'PRODUCTS SECTION',
+                      'ESSENTIAL RANGE - OVER 20% OFF!',
+                      style: TextStyle(
+                        fontSize: 20,
+                        color: Colors.black,
+                        letterSpacing: 1,
+                      ),
+                    ),
+                    const SizedBox(height: 48),
+                    GridView.count(
+                      shrinkWrap: true,
+                      physics: const NeverScrollableScrollPhysics(),
+                      crossAxisCount:
+                          MediaQuery.of(context).size.width > 600 ? 2 : 1,
+                      crossAxisSpacing: 24,
+                      mainAxisSpacing: 48,
+                      children: const [
+                        ProductCard(
+                          title: 'Placeholder Product 1',
+                          price: '£10.00',
+                          imageUrl:
+                              'https://shop.upsu.net/cdn/shop/files/PortsmouthCityMagnet1_1024x1024@2x.jpg?v=1752230282',
+                        ),
+                        ProductCard(
+                          title: 'Placeholder Product 2',
+                          price: '£15.00',
+                          imageUrl:
+                              'https://shop.upsu.net/cdn/shop/files/PortsmouthCityMagnet1_1024x1024@2x.jpg?v=1752230282',
+                        ),
+                      ],
+                    ),
+                  ],
+                ),
+              ),
+            ),
+
+            Container(
+              color: Colors.white,
+              child: Padding(
+                padding: const EdgeInsets.all(40.0),
+                child: Column(
+                  children: [
+                    const Text(
+                      'SIGNATURE RANGE',
+                      style: TextStyle(
+                        fontSize: 20,
+                        color: Colors.black,
+                        letterSpacing: 1,
+                      ),
+                    ),
+                    const SizedBox(height: 48),
+                    GridView.count(
+                      shrinkWrap: true,
+                      physics: const NeverScrollableScrollPhysics(),
+                      crossAxisCount:
+                          MediaQuery.of(context).size.width > 600 ? 2 : 1,
+                      crossAxisSpacing: 24,
+                      mainAxisSpacing: 48,
+                      children: const [
+                        ProductCard(
+                          title: 'Placeholder Product 1',
+                          price: '£10.00',
+                          imageUrl:
+                              'https://shop.upsu.net/cdn/shop/files/PortsmouthCityMagnet1_1024x1024@2x.jpg?v=1752230282',
+                        ),
+                        ProductCard(
+                          title: 'Placeholder Product 2',
+                          price: '£15.00',
+                          imageUrl:
+                              'https://shop.upsu.net/cdn/shop/files/PortsmouthCityMagnet1_1024x1024@2x.jpg?v=1752230282',
+                        ),
+                      ],
+                    ),
+                  ],
+                ),
+              ),
+            ),
+
+            Container(
+              color: Colors.white,
+              child: Padding(
+                padding: const EdgeInsets.all(40.0),
+                child: Column(
+                  children: [
+                    const Text(
+                      'PORTSMOUTH CITY COLLECTION',
                       style: TextStyle(
                         fontSize: 20,
                         color: Colors.black,
@@ -282,6 +370,25 @@ class HomeScreen extends StatelessWidget {
                               'https://shop.upsu.net/cdn/shop/files/PortsmouthCityMagnet1_1024x1024@2x.jpg?v=1752230282',
                         ),
                       ],
+                    ),
+                    const SizedBox(height: 48),
+                    ElevatedButton(
+                      onPressed: placeholderCallbackForButtons,
+                      style: ElevatedButton.styleFrom(
+                        backgroundColor: const Color(0xFF4d2963),
+                        foregroundColor: Colors.white,
+                        shape: const RoundedRectangleBorder(
+                          borderRadius: BorderRadius.zero,
+                        ),
+                      ),
+                      child: const Text(
+                        'VIEW ALL PRODUCTS',
+                        style: TextStyle(
+                          fontSize: 14,
+                          fontWeight: FontWeight.w600,
+                          letterSpacing: 1,
+                        ),
+                      ),
                     ),
                   ],
                 ),
