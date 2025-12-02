@@ -40,6 +40,9 @@ class HomeScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final screenWidth = MediaQuery.of(context).size.width;
+    final isMobile = screenWidth < 600;
+
     return Scaffold(
       body: SingleChildScrollView(
         child: Column(
@@ -48,7 +51,7 @@ class HomeScreen extends StatelessWidget {
 
             // Hero Section
             SizedBox(
-              height: 400,
+              height: isMobile ? 300 : 400,
               width: double.infinity,
               child: Stack(
                 children: [
@@ -72,26 +75,27 @@ class HomeScreen extends StatelessWidget {
                   ),
                   // Content overlay
                   Positioned(
-                    left: 24,
-                    right: 24,
-                    top: 80,
+                    left: isMobile ? 16 : 24,
+                    right: isMobile ? 16 : 24,
+                    top: isMobile ? 60 : 80,
                     child: Column(
                       crossAxisAlignment: CrossAxisAlignment.center,
                       children: [
-                        const Text(
+                        Text(
                           'Placeholder Hero Title',
                           style: TextStyle(
-                            fontSize: 32,
+                            fontSize: isMobile ? 24 : 32,
                             fontWeight: FontWeight.bold,
                             color: Colors.white,
                             height: 1.2,
                           ),
+                          textAlign: TextAlign.center,
                         ),
                         const SizedBox(height: 16),
-                        const Text(
+                        Text(
                           "This is placeholder text for the hero section.",
                           style: TextStyle(
-                            fontSize: 20,
+                            fontSize: isMobile ? 16 : 20,
                             color: Colors.white,
                             height: 1.5,
                           ),
@@ -217,7 +221,7 @@ class HomeScreen extends StatelessWidget {
             // Image with text section
             Container(
               color: Colors.white,
-              padding: const EdgeInsets.all(40.0),
+              padding: EdgeInsets.all(isMobile ? 20.0 : 40.0),
               child: Column(
                 children: [
                   Image.network(
@@ -287,8 +291,8 @@ class HomeScreen extends StatelessWidget {
             Container(
               width: double.infinity,
               color: Colors.grey[50],
-              padding: const EdgeInsets.all(24),
-              child: const Text(
+              padding: EdgeInsets.all(isMobile ? 16 : 24),
+              child: Text(
                 'Opening Hours\n\n'
                 '❄️ Winter Break Closure Dates ❄️\n'
                 'Closing 4pm 19/12/2025\n'
@@ -303,7 +307,7 @@ class HomeScreen extends StatelessWidget {
                 textAlign: TextAlign.center,
                 style: TextStyle(
                   color: Colors.grey,
-                  fontSize: 16,
+                  fontSize: isMobile ? 14 : 16,
                   fontWeight: FontWeight.w600,
                 ),
               ),
@@ -331,43 +335,51 @@ class ProductSection extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final screenWidth = MediaQuery.of(context).size.width;
+    final isMobile = screenWidth < 600;
+
     return Container(
       color: Colors.white,
-      padding: const EdgeInsets.all(40.0),
+      padding: EdgeInsets.all(isMobile ? 20.0 : 40.0),
       child: Column(
         children: [
           Text(
             title,
-            style: const TextStyle(
-              fontSize: 20,
+            style: TextStyle(
+              fontSize: isMobile ? 16 : 20,
               color: Colors.black,
               letterSpacing: 1,
             ),
+            textAlign: TextAlign.center,
           ),
-          const SizedBox(height: 48),
+          SizedBox(height: isMobile ? 24 : 48),
           GridView.count(
             shrinkWrap: true,
             physics: const NeverScrollableScrollPhysics(),
-            crossAxisCount: MediaQuery.of(context).size.width > 600 ? 2 : 1,
-            crossAxisSpacing: 24,
-            mainAxisSpacing: 48,
+            crossAxisCount: isMobile ? 1 : 2,
+            crossAxisSpacing: isMobile ? 16 : 24,
+            mainAxisSpacing: isMobile ? 24 : 48,
             children: products,
           ),
           if (showViewAllButton) ...[
-            const SizedBox(height: 48),
+            SizedBox(height: isMobile ? 24 : 48),
             ElevatedButton(
               onPressed: onViewAllPressed,
               style: ElevatedButton.styleFrom(
                 backgroundColor: const Color(0xFF4d2963),
                 foregroundColor: Colors.white,
+                padding: EdgeInsets.symmetric(
+                  horizontal: isMobile ? 20 : 24,
+                  vertical: isMobile ? 12 : 16,
+                ),
                 shape: const RoundedRectangleBorder(
                   borderRadius: BorderRadius.zero,
                 ),
               ),
-              child: const Text(
+              child: Text(
                 'VIEW ALL PRODUCTS',
                 style: TextStyle(
-                  fontSize: 14,
+                  fontSize: isMobile ? 12 : 14,
                   fontWeight: FontWeight.w600,
                   letterSpacing: 1,
                 ),
