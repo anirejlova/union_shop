@@ -30,10 +30,18 @@ class UnionShopApp extends StatelessWidget {
   }
 }
 
-class HomeScreen extends StatelessWidget {
+class HomeScreen extends StatefulWidget {
   const HomeScreen({super.key});
 
+  @override
+  State<HomeScreen> createState() => _HomeScreenState();
+}
+
+class _HomeScreenState extends State<HomeScreen> {
+  bool _isMenuOpen = false;
+
   void navigateToHome(BuildContext context) {
+    setState(() => _isMenuOpen = false);
     Navigator.pushNamedAndRemoveUntil(context, '/', (route) => false);
   }
 
@@ -41,8 +49,18 @@ class HomeScreen extends StatelessWidget {
     Navigator.pushNamed(context, '/product');
   }
 
-  void navigateToAbout(BuildContext context) {
-    Navigator.pushNamed(context, '/about');
+  void toggleMenu() {
+    setState(() => _isMenuOpen = !_isMenuOpen);
+  }
+
+  void handleMenuNavigation(BuildContext context, String route) {
+    setState(() => _isMenuOpen = false);
+    if (route == 'home') {
+      navigateToHome(context);
+    } else if (route == 'about') {
+      Navigator.pushNamed(context, '/about');
+    }
+    // Add other routes later
   }
 
   void placeholderCallbackForButtons() {
@@ -159,7 +177,7 @@ class HomeScreen extends StatelessWidget {
                                     minWidth: 32,
                                     minHeight: 32,
                                   ),
-                                  onPressed: () => navigateToAbout(context),
+                                  onPressed: toggleMenu,
                                 ),
                               ],
                             ),
@@ -171,6 +189,73 @@ class HomeScreen extends StatelessWidget {
                 ],
               ),
             ),
+
+            // Dropdown Menu
+            if (_isMenuOpen)
+              Container(
+                width: double.infinity,
+                color: Colors.white,
+                child: Column(
+                  children: [
+                    const Divider(height: 1, color: Colors.grey),
+                    InkWell(
+                      onTap: () => handleMenuNavigation(context, 'home'),
+                      child: Container(
+                        padding: const EdgeInsets.symmetric(
+                            vertical: 16, horizontal: 20),
+                        width: double.infinity,
+                        child:
+                            const Text('Home', style: TextStyle(fontSize: 16)),
+                      ),
+                    ),
+                    const Divider(height: 1, color: Colors.grey),
+                    InkWell(
+                      onTap: () => setState(() => _isMenuOpen = false),
+                      child: Container(
+                        padding: const EdgeInsets.symmetric(
+                            vertical: 16, horizontal: 20),
+                        width: double.infinity,
+                        child:
+                            const Text('Shop', style: TextStyle(fontSize: 16)),
+                      ),
+                    ),
+                    const Divider(height: 1, color: Colors.grey),
+                    InkWell(
+                      onTap: () => setState(() => _isMenuOpen = false),
+                      child: Container(
+                        padding: const EdgeInsets.symmetric(
+                            vertical: 16, horizontal: 20),
+                        width: double.infinity,
+                        child: const Text('The Print Shack',
+                            style: TextStyle(fontSize: 16)),
+                      ),
+                    ),
+                    const Divider(height: 1, color: Colors.grey),
+                    InkWell(
+                      onTap: () => setState(() => _isMenuOpen = false),
+                      child: Container(
+                        padding: const EdgeInsets.symmetric(
+                            vertical: 16, horizontal: 20),
+                        width: double.infinity,
+                        child:
+                            const Text('SALE!', style: TextStyle(fontSize: 16)),
+                      ),
+                    ),
+                    const Divider(height: 1, color: Colors.grey),
+                    InkWell(
+                      onTap: () => handleMenuNavigation(context, 'about'),
+                      child: Container(
+                        padding: const EdgeInsets.symmetric(
+                            vertical: 16, horizontal: 20),
+                        width: double.infinity,
+                        child:
+                            const Text('About', style: TextStyle(fontSize: 16)),
+                      ),
+                    ),
+                    const Divider(height: 1, color: Colors.grey),
+                  ],
+                ),
+              ),
 
             // Hero Section
             SizedBox(
