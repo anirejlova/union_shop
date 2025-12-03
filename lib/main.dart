@@ -185,26 +185,49 @@ class HomeScreen extends StatelessWidget {
               onViewAllPressed: placeholderCallbackForButtons,
             ),
 
-            ProductSection(
-              title: "OUR RANGE",
-              products: const [
-                ProductCardDark(
-                  title: 'Clothing',
-                  imageUrl: 'assets/images/Clothing_purpleHoodie.jpg',
-                ),
-                ProductCardDark(
-                  title: 'Merchandise',
-                  imageUrl: 'assets/images/merchendise.jpg',
-                ),
-                ProductCardDark(
-                  title: 'Graduation',
-                  imageUrl: 'assets/images/Graduation_grayHoodie.jpg',
-                ),
-                ProductCardDark(
-                  title: 'SALE',
-                  imageUrl: 'assets/images/SALE.jpg',
-                ),
-              ],
+            Container(
+              color: Colors.white,
+              padding: EdgeInsets.all(isMobile ? 20.0 : 40.0),
+              child: Column(
+                children: [
+                  Text(
+                    "OUR RANGE",
+                    style: TextStyle(
+                      fontSize: isMobile ? 16 : 20,
+                      color: Colors.black,
+                      letterSpacing: 1,
+                    ),
+                    textAlign: TextAlign.center,
+                  ),
+                  SizedBox(height: isMobile ? 24 : 48),
+                  GridView.count(
+                    shrinkWrap: true,
+                    physics: const NeverScrollableScrollPhysics(),
+                    crossAxisCount: 2,
+                    crossAxisSpacing: isMobile ? 8 : 16,
+                    mainAxisSpacing: isMobile ? 8 : 16,
+                    childAspectRatio: 1.0,
+                    children: const [
+                      ProductCardDark(
+                        title: 'Clothing',
+                        imageUrl: 'assets/images/Clothing_purpleHoodie.jpg',
+                      ),
+                      ProductCardDark(
+                        title: 'Merchandise',
+                        imageUrl: 'assets/images/merchendise.jpg',
+                      ),
+                      ProductCardDark(
+                        title: 'Graduation',
+                        imageUrl: 'assets/images/Graduation_grayHoodie.jpg',
+                      ),
+                      ProductCardDark(
+                        title: 'SALE',
+                        imageUrl: 'assets/images/SALE.jpg',
+                      ),
+                    ],
+                  ),
+                ],
+              ),
             ),
 
             // Image with text section
@@ -431,24 +454,30 @@ class ProductCardDark extends StatelessWidget {
       onTap: () {
         Navigator.pushNamed(context, '/product');
       },
-      child: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: [
-          Expanded(
-            child: Image.asset(
-              imageUrl,
-              fit: BoxFit.cover,
-              errorBuilder: (context, error, stackTrace) {
-                return Container(
-                  color: Colors.grey[800],
-                  child: const Center(
-                    child: Icon(Icons.image_not_supported, color: Colors.grey),
-                  ),
-                );
-              },
+      child: Container(
+        decoration: BoxDecoration(
+          image: DecorationImage(
+            image: AssetImage(imageUrl),
+            fit: BoxFit.cover,
+          ),
+        ),
+        child: Container(
+          decoration: BoxDecoration(
+            color: Colors.black.withValues(alpha: 0.4),
+          ),
+          child: Center(
+            child: Text(
+              title,
+              style: const TextStyle(
+                fontSize: 24,
+                fontWeight: FontWeight.bold,
+                color: Colors.white,
+                letterSpacing: 1,
+              ),
+              textAlign: TextAlign.center,
             ),
           ),
-        ],
+        ),
       ),
     );
   }
