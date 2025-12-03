@@ -64,7 +64,7 @@ class _AppHeaderState extends State<AppHeader> {
       children: [
         // Header
         Container(
-          height: 100,
+          height: 120,
           color: Colors.white,
           child: Column(
             children: [

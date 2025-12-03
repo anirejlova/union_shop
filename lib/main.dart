@@ -52,7 +52,7 @@ class HomeScreen extends StatelessWidget {
 
             // Hero Section
             SizedBox(
-              height: isMobile ? 300 : 400,
+              height: isMobile ? 250 : 400,
               width: double.infinity,
               child: Stack(
                 children: [
@@ -61,8 +61,8 @@ class HomeScreen extends StatelessWidget {
                     child: Container(
                       decoration: const BoxDecoration(
                         image: DecorationImage(
-                          image: NetworkImage(
-                            'https://shop.upsu.net/cdn/shop/files/PortsmouthCityPostcard2_1024x1024@2x.jpg?v=1752232561',
+                          image: AssetImage(
+                            'assets/images/PompCity_notebook.jpg',
                           ),
                           fit: BoxFit.cover,
                         ),
@@ -83,7 +83,7 @@ class HomeScreen extends StatelessWidget {
                       crossAxisAlignment: CrossAxisAlignment.center,
                       children: [
                         Text(
-                          'Placeholder Hero Title',
+                          'There is stuff to buy',
                           style: TextStyle(
                             fontSize: isMobile ? 24 : 32,
                             fontWeight: FontWeight.bold,
@@ -94,7 +94,7 @@ class HomeScreen extends StatelessWidget {
                         ),
                         const SizedBox(height: 16),
                         Text(
-                          "This is placeholder text for the hero section.",
+                          "Pompey merchandise! Students, staff and all others welcome to buy several things!",
                           style: TextStyle(
                             fontSize: isMobile ? 16 : 20,
                             color: Colors.white,
@@ -113,8 +113,8 @@ class HomeScreen extends StatelessWidget {
                             ),
                           ),
                           child: const Text(
-                            'BROWSE PRODUCTS',
-                            style: TextStyle(fontSize: 14, letterSpacing: 1),
+                            'BUY HERE!',
+                            style: TextStyle(fontSize: 16, letterSpacing: 1),
                           ),
                         ),
                       ],
