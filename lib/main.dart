@@ -129,10 +129,9 @@ class HomeScreen extends StatelessWidget {
               title: 'ESSENTIAL RANGE - OVER 20% OFF!',
               products: const [
                 ProductCard(
-                  title: 'Placeholder Product 1',
-                  price: '£10.00',
-                  imageUrl:
-                      'https://shop.upsu.net/cdn/shop/files/PortsmouthCityMagnet1_1024x1024@2x.jpg?v=1752230282',
+                  title: 'Limited Edition Essential Zip Hoodie',
+                  price: '£20.00',
+                  imageUrl: 'assets/images/limitedEd_pinkHoodie.jpg',
                 ),
                 ProductCard(
                   title: 'Placeholder Product 2',
@@ -225,8 +224,8 @@ class HomeScreen extends StatelessWidget {
               padding: EdgeInsets.all(isMobile ? 20.0 : 40.0),
               child: Column(
                 children: [
-                  Image.network(
-                    'https://shop.upsu.net/cdn/shop/files/PortsmouthCityMagnet1_1024x1024@2x.jpg?v=1752230282',
+                  Image.asset(
+                    'assets/images/Clothing_purpleHoodie.jpg',
                     fit: BoxFit.cover,
                     errorBuilder: (context, error, stackTrace) {
                       return Container(
@@ -392,7 +391,7 @@ class ProductCard extends StatelessWidget {
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           Expanded(
-            child: Image.network(
+            child: Image.asset(
               imageUrl,
               fit: BoxFit.cover,
               errorBuilder: (context, error, stackTrace) {
@@ -447,7 +446,7 @@ class ProductCardDark extends StatelessWidget {
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           Expanded(
-            child: Image.network(
+            child: Image.asset(
               imageUrl,
               fit: BoxFit.cover,
               errorBuilder: (context, error, stackTrace) {
