@@ -134,10 +134,9 @@ class HomeScreen extends StatelessWidget {
                   imageUrl: 'assets/images/limitedEd_pinkHoodie.jpg',
                 ),
                 ProductCard(
-                  title: 'Placeholder Product 2',
-                  price: '£15.00',
-                  imageUrl:
-                      'https://shop.upsu.net/cdn/shop/files/PortsmouthCityMagnet1_1024x1024@2x.jpg?v=1752230282',
+                  title: 'Essential T-Shirt',
+                  price: '£10.00',
+                  imageUrl: 'assets/images/EssenTshirt_greenShirt.jpg',
                 ),
               ],
             ),
@@ -146,16 +145,14 @@ class HomeScreen extends StatelessWidget {
               title: 'SIGNATURE RANGE',
               products: const [
                 ProductCard(
-                  title: 'Placeholder Product 1',
-                  price: '£10.00',
-                  imageUrl:
-                      'https://shop.upsu.net/cdn/shop/files/PortsmouthCityMagnet1_1024x1024@2x.jpg?v=1752230282',
+                  title: 'Signature Hoodie',
+                  price: '£32.99',
+                  imageUrl: 'assets/images/SignatureHoodie_greenHoodie.jpg',
                 ),
                 ProductCard(
-                  title: 'Placeholder Product 2',
-                  price: '£15.00',
-                  imageUrl:
-                      'https://shop.upsu.net/cdn/shop/files/PortsmouthCityMagnet1_1024x1024@2x.jpg?v=1752230282',
+                  title: 'Signature T-Shirt',
+                  price: '£14.99',
+                  imageUrl: 'assets/images/SignatureTshirt_blueShirt.jpg',
                 ),
               ],
             ),
@@ -164,28 +161,24 @@ class HomeScreen extends StatelessWidget {
               title: 'PORTSMOUTH CITY COLLECTION',
               products: const [
                 ProductCard(
-                  title: 'Placeholder Product 1',
-                  price: '£10.00',
-                  imageUrl:
-                      'https://shop.upsu.net/cdn/shop/files/PortsmouthCityMagnet1_1024x1024@2x.jpg?v=1752230282',
+                  title: 'Portsmouth City Postcard',
+                  price: '£1.00',
+                  imageUrl: 'assets/images/PompCity_Postcard.jpg',
                 ),
                 ProductCard(
-                  title: 'Placeholder Product 2',
-                  price: '£15.00',
-                  imageUrl:
-                      'https://shop.upsu.net/cdn/shop/files/PortsmouthCityMagnet1_1024x1024@2x.jpg?v=1752230282',
+                  title: 'Portsmouth City Magnet',
+                  price: '£4.50',
+                  imageUrl: 'assets/images/PompCity_Magnet.jpg',
                 ),
                 ProductCard(
-                  title: 'Placeholder Product 3',
-                  price: '£20.00',
-                  imageUrl:
-                      'https://shop.upsu.net/cdn/shop/files/PortsmouthCityMagnet1_1024x1024@2x.jpg?v=1752230282',
+                  title: 'Portsmouth City Bookmark',
+                  price: '£3.00',
+                  imageUrl: 'assets/images/PompCity_Bookmark.jpg',
                 ),
                 ProductCard(
-                  title: 'Placeholder Product 4',
-                  price: '£25.00',
-                  imageUrl:
-                      'https://shop.upsu.net/cdn/shop/files/PortsmouthCityMagnet1_1024x1024@2x.jpg?v=1752230282',
+                  title: 'Portsmouth City Nnotebook',
+                  price: '£7.50',
+                  imageUrl: 'assets/images/PompCity_Notebook.jpg',
                 ),
               ],
               showViewAllButton: true,
