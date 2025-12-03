@@ -243,7 +243,7 @@ class HomeScreen extends StatelessWidget {
                   const Align(
                     alignment: Alignment.centerLeft,
                     child: Text(
-                      'Heading Text',
+                      'Add a Personal Touch',
                       style: TextStyle(
                         fontSize: 24,
                         fontWeight: FontWeight.bold,
@@ -255,7 +255,7 @@ class HomeScreen extends StatelessWidget {
                   const Align(
                     alignment: Alignment.centerLeft,
                     child: Text(
-                      'This is some smaller text that goes underneath the heading. You can add more descriptive content here.',
+                      'First add your item of clothing to your cart then click below to add your text! One line of text contains 10 characters!',
                       style: TextStyle(
                         fontSize: 14,
                         color: Colors.black87,
@@ -275,7 +275,7 @@ class HomeScreen extends StatelessWidget {
                         ),
                       ),
                       child: const Text(
-                        'BUTTON TEXT',
+                        'CLICK HERE TO ADD TEXT!',
                         style: TextStyle(
                           fontSize: 14,
                           fontWeight: FontWeight.w600,
