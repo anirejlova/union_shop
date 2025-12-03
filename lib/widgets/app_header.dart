@@ -9,6 +9,14 @@ class AppHeader extends StatefulWidget {
 
 class _AppHeaderState extends State<AppHeader> {
   bool _isMenuOpen = false;
+  bool _isSearchOpen = false;
+  final TextEditingController _searchController = TextEditingController();
+
+  @override
+  void dispose() {
+    _searchController.dispose();
+    super.dispose();
+  }
 
   void navigateToHome(BuildContext context) {
     setState(() => _isMenuOpen = false);
@@ -16,7 +24,10 @@ class _AppHeaderState extends State<AppHeader> {
   }
 
   void toggleMenu() {
-    setState(() => _isMenuOpen = !_isMenuOpen);
+    setState(() {
+      _isMenuOpen = !_isMenuOpen;
+      if (_isMenuOpen) _isSearchOpen = false;
+    });
   }
 
   void handleMenuNavigation(BuildContext context, String route) {
@@ -26,6 +37,22 @@ class _AppHeaderState extends State<AppHeader> {
     } else if (route == 'about') {
       Navigator.pushNamed(context, '/about');
     }
+  }
+
+  void toggleSearch() {
+    setState(() {
+      _isSearchOpen = !_isSearchOpen;
+      if (_isSearchOpen) {
+        _isMenuOpen = false;
+      } else {
+        _searchController.clear();
+      }
+    });
+  }
+
+  void performSearch() {
+    // Placeholder for search functionality
+    debugPrint('Searching for: ${_searchController.text}');
   }
 
   void placeholderCallbackForButtons() {}
@@ -93,7 +120,7 @@ class _AppHeaderState extends State<AppHeader> {
                               padding: const EdgeInsets.all(8),
                               constraints: const BoxConstraints(
                                   minWidth: 32, minHeight: 32),
-                              onPressed: placeholderCallbackForButtons,
+                              onPressed: toggleSearch,
                             ),
                             IconButton(
                               icon: const Icon(Icons.person_outline,
@@ -128,6 +155,63 @@ class _AppHeaderState extends State<AppHeader> {
               ),
             ],
           ),
+        ),
+
+        // Search Bar
+        AnimatedSize(
+          duration: const Duration(milliseconds: 300),
+          curve: Curves.easeInOut,
+          child: _isSearchOpen
+              ? Container(
+                  width: double.infinity,
+                  color: Colors.white,
+                  padding:
+                      const EdgeInsets.symmetric(horizontal: 16, vertical: 12),
+                  child: Row(
+                    children: [
+                      Expanded(
+                        child: TextField(
+                          controller: _searchController,
+                          autofocus: true,
+                          decoration: InputDecoration(
+                            hintText: 'Search products...',
+                            border: OutlineInputBorder(
+                              borderRadius: BorderRadius.circular(4),
+                              borderSide: const BorderSide(color: Colors.grey),
+                            ),
+                            contentPadding: const EdgeInsets.symmetric(
+                                horizontal: 12, vertical: 8),
+                            suffixIcon: _searchController.text.isNotEmpty
+                                ? IconButton(
+                                    icon: const Icon(Icons.clear, size: 18),
+                                    onPressed: () {
+                                      setState(() => _searchController.clear());
+                                    },
+                                  )
+                                : null,
+                          ),
+                          onSubmitted: (_) => performSearch(),
+                          onChanged: (_) => setState(() {}),
+                        ),
+                      ),
+                      const SizedBox(width: 8),
+                      ElevatedButton(
+                        onPressed: performSearch,
+                        style: ElevatedButton.styleFrom(
+                          backgroundColor: const Color(0xFF4d2963),
+                          foregroundColor: Colors.white,
+                          padding: const EdgeInsets.symmetric(
+                              horizontal: 16, vertical: 12),
+                          shape: RoundedRectangleBorder(
+                            borderRadius: BorderRadius.circular(4),
+                          ),
+                        ),
+                        child: const Text('Search'),
+                      ),
+                    ],
+                  ),
+                )
+              : const SizedBox.shrink(),
         ),
 
         // Dropdown Menu
