@@ -236,19 +236,25 @@ class HomeScreen extends StatelessWidget {
               padding: EdgeInsets.all(isMobile ? 20.0 : 40.0),
               child: Column(
                 children: [
-                  Image.asset(
-                    'assets/images/printShack.jpg',
-                    fit: BoxFit.cover,
-                    errorBuilder: (context, error, stackTrace) {
-                      return Container(
-                        color: Colors.grey[300],
-                        height: 100,
-                        child: const Center(
-                          child: Icon(Icons.image_not_supported,
-                              color: Colors.grey, size: 50),
-                        ),
-                      );
-                    },
+                  Padding(
+                    padding: EdgeInsets.symmetric(
+                      horizontal: isMobile ? 30.0 : 70.0,
+                      vertical: isMobile ? 10.0 : 30.0,
+                    ),
+                    child: Image.asset(
+                      'assets/images/printShack.jpg',
+                      fit: BoxFit.cover,
+                      errorBuilder: (context, error, stackTrace) {
+                        return Container(
+                          color: Colors.grey[300],
+                          height: 100,
+                          child: const Center(
+                            child: Icon(Icons.image_not_supported,
+                                color: Colors.grey, size: 50),
+                          ),
+                        );
+                      },
+                    ),
                   ),
                   const SizedBox(height: 20),
                   const Align(
@@ -348,6 +354,7 @@ class ProductSection extends StatelessWidget {
             crossAxisCount: isMobile ? 1 : 2,
             crossAxisSpacing: isMobile ? 16 : 24,
             mainAxisSpacing: isMobile ? 24 : 48,
+            childAspectRatio: isMobile ? 1.2 : 1.4,
             children: products,
           ),
           if (showViewAllButton) ...[
