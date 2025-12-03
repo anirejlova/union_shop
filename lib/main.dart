@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:union_shop/product_page.dart';
 import 'package:union_shop/about_page.dart';
 import 'package:union_shop/widgets/app_header.dart';
+import 'package:union_shop/widgets/app_footer.dart';
 
 void main() {
   runApp(const UnionShopApp());
@@ -288,30 +289,7 @@ class HomeScreen extends StatelessWidget {
             ),
 
             // Footer
-            Container(
-              width: double.infinity,
-              color: Colors.grey[50],
-              padding: EdgeInsets.all(isMobile ? 16 : 24),
-              child: Text(
-                'Opening Hours\n\n'
-                '❄️ Winter Break Closure Dates ❄️\n'
-                'Closing 4pm 19/12/2025\n'
-                'Reopening 10am 05/01/2026\n'
-                'Last post date: 12pm on 18/12/2025\n\n'
-                '------------------------\n\n'
-                '(Term Time)\n'
-                'Monday - Friday 10am - 4pm\n\n'
-                '(Outside of Term Time / Consolidation Weeks)\n'
-                'Monday - Friday 10am - 3pm\n\n'
-                'Purchase online 24/7',
-                textAlign: TextAlign.center,
-                style: TextStyle(
-                  color: Colors.grey,
-                  fontSize: isMobile ? 14 : 16,
-                  fontWeight: FontWeight.w600,
-                ),
-              ),
-            ),
+            const AppFooter(),
           ],
         ),
       ),
