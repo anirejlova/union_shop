@@ -190,23 +190,19 @@ class HomeScreen extends StatelessWidget {
               products: const [
                 ProductCardDark(
                   title: 'Clothing',
-                  imageUrl:
-                      'https://shop.upsu.net/cdn/shop/files/PortsmouthCityMagnet1_1024x1024@2x.jpg?v=1752230282',
+                  imageUrl: 'assets/images/Clothing_purpleHoodie.jpg',
                 ),
                 ProductCardDark(
                   title: 'Merchandise',
-                  imageUrl:
-                      'https://shop.upsu.net/cdn/shop/files/PortsmouthCityMagnet1_1024x1024@2x.jpg?v=1752230282',
+                  imageUrl: 'assets/images/merchendise.jpg',
                 ),
                 ProductCardDark(
                   title: 'Graduation',
-                  imageUrl:
-                      'https://shop.upsu.net/cdn/shop/files/PortsmouthCityMagnet1_1024x1024@2x.jpg?v=1752230282',
+                  imageUrl: 'assets/images/Graduation_grayHoodie.jpg',
                 ),
                 ProductCardDark(
                   title: 'SALE',
-                  imageUrl:
-                      'https://shop.upsu.net/cdn/shop/files/PortsmouthCityMagnet1_1024x1024@2x.jpg?v=1752230282',
+                  imageUrl: 'assets/images/SALE.jpg',
                 ),
               ],
             ),
@@ -218,7 +214,7 @@ class HomeScreen extends StatelessWidget {
               child: Column(
                 children: [
                   Image.asset(
-                    'assets/images/Clothing_purpleHoodie.jpg',
+                    'assets/images/printShack.jpg',
                     fit: BoxFit.cover,
                     errorBuilder: (context, error, stackTrace) {
                       return Container(
