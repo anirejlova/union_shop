@@ -199,33 +199,72 @@ class HomeScreen extends StatelessWidget {
                     ),
                     textAlign: TextAlign.center,
                   ),
-                  SizedBox(height: isMobile ? 24 : 48),
-                  GridView.count(
-                    shrinkWrap: true,
-                    physics: const NeverScrollableScrollPhysics(),
-                    crossAxisCount: 2,
-                    crossAxisSpacing: isMobile ? 8 : 16,
-                    mainAxisSpacing: isMobile ? 8 : 16,
-                    childAspectRatio: 1.0,
-                    children: const [
-                      ProductCardDark(
-                        title: 'Clothing',
-                        imageUrl: 'assets/images/Clothing_purpleHoodie.jpg',
-                      ),
-                      ProductCardDark(
-                        title: 'Merchandise',
-                        imageUrl: 'assets/images/merchendise.jpg',
-                      ),
-                      ProductCardDark(
-                        title: 'Graduation',
-                        imageUrl: 'assets/images/Graduation_grayHoodie.jpg',
-                      ),
-                      ProductCardDark(
-                        title: 'SALE',
-                        imageUrl: 'assets/images/SALE.jpg',
-                      ),
-                    ],
-                  ),
+                  SizedBox(height: isMobile ? 24 : 32),
+                  isMobile
+                      ? GridView.count(
+                          shrinkWrap: true,
+                          physics: const NeverScrollableScrollPhysics(),
+                          crossAxisCount: 2,
+                          crossAxisSpacing: 8,
+                          mainAxisSpacing: 8,
+                          childAspectRatio: 1.0,
+                          children: const [
+                            ProductCardDark(
+                              title: 'Clothing',
+                              imageUrl:
+                                  'assets/images/Clothing_purpleHoodie.jpg',
+                            ),
+                            ProductCardDark(
+                              title: 'Merchandise',
+                              imageUrl: 'assets/images/merchendise.jpg',
+                            ),
+                            ProductCardDark(
+                              title: 'Graduation',
+                              imageUrl:
+                                  'assets/images/Graduation_grayHoodie.jpg',
+                            ),
+                            ProductCardDark(
+                              title: 'SALE',
+                              imageUrl: 'assets/images/SALE.jpg',
+                            ),
+                          ],
+                        )
+                      : SizedBox(
+                          height: 150,
+                          child: Row(
+                            children: const [
+                              Expanded(
+                                child: ProductCardDark(
+                                  title: 'Clothing',
+                                  imageUrl:
+                                      'assets/images/Clothing_purpleHoodie.jpg',
+                                ),
+                              ),
+                              SizedBox(width: 16),
+                              Expanded(
+                                child: ProductCardDark(
+                                  title: 'Merchandise',
+                                  imageUrl: 'assets/images/merchendise.jpg',
+                                ),
+                              ),
+                              SizedBox(width: 16),
+                              Expanded(
+                                child: ProductCardDark(
+                                  title: 'Graduation',
+                                  imageUrl:
+                                      'assets/images/Graduation_grayHoodie.jpg',
+                                ),
+                              ),
+                              SizedBox(width: 16),
+                              Expanded(
+                                child: ProductCardDark(
+                                  title: 'SALE',
+                                  imageUrl: 'assets/images/SALE.jpg',
+                                ),
+                              ),
+                            ],
+                          ),
+                        ),
                 ],
               ),
             ),
@@ -234,75 +273,142 @@ class HomeScreen extends StatelessWidget {
             Container(
               color: Colors.white,
               padding: EdgeInsets.all(isMobile ? 20.0 : 40.0),
-              child: Column(
-                children: [
-                  Padding(
-                    padding: EdgeInsets.symmetric(
-                      horizontal: isMobile ? 30.0 : 70.0,
-                      vertical: isMobile ? 10.0 : 30.0,
-                    ),
-                    child: Image.asset(
-                      'assets/images/printShack.jpg',
-                      fit: BoxFit.cover,
-                      errorBuilder: (context, error, stackTrace) {
-                        return Container(
-                          color: Colors.grey[300],
-                          height: 100,
-                          child: const Center(
-                            child: Icon(Icons.image_not_supported,
-                                color: Colors.grey, size: 50),
+              child: isMobile
+                  ? Column(
+                      children: [
+                        Padding(
+                          padding: const EdgeInsets.symmetric(
+                            horizontal: 60.0,
+                            vertical: 10.0,
                           ),
-                        );
-                      },
-                    ),
-                  ),
-                  const SizedBox(height: 20),
-                  const Align(
-                    alignment: Alignment.centerLeft,
-                    child: Text(
-                      'Add a Personal Touch',
-                      style: TextStyle(
-                        fontSize: 24,
-                        fontWeight: FontWeight.bold,
-                        color: Colors.black,
-                      ),
-                    ),
-                  ),
-                  const SizedBox(height: 12),
-                  const Align(
-                    alignment: Alignment.centerLeft,
-                    child: Text(
-                      'First add your item of clothing to your cart then click below to add your text! One line of text contains 10 characters!',
-                      style: TextStyle(
-                        fontSize: 14,
-                        color: Colors.black87,
-                      ),
-                    ),
-                  ),
-                  const SizedBox(height: 20),
-                  Align(
-                    alignment: Alignment.centerLeft,
-                    child: ElevatedButton(
-                      onPressed: placeholderCallbackForButtons,
-                      style: ElevatedButton.styleFrom(
-                        backgroundColor: const Color(0xFF4d2963),
-                        foregroundColor: Colors.white,
-                        shape: const RoundedRectangleBorder(
-                          borderRadius: BorderRadius.zero,
+                          child: Image.asset(
+                            'assets/images/printShack.jpg',
+                            fit: BoxFit.cover,
+                            errorBuilder: (context, error, stackTrace) {
+                              return Container(
+                                color: Colors.grey[300],
+                                height: 100,
+                                child: const Center(
+                                  child: Icon(Icons.image_not_supported,
+                                      color: Colors.grey, size: 50),
+                                ),
+                              );
+                            },
+                          ),
                         ),
-                      ),
-                      child: const Text(
-                        'CLICK HERE TO ADD TEXT!',
-                        style: TextStyle(
-                          fontSize: 14,
-                          fontWeight: FontWeight.w600,
-                          letterSpacing: 1,
+                        const SizedBox(height: 20),
+                        const Align(
+                          alignment: Alignment.centerLeft,
+                          child: Text(
+                            'Add a Personal Touch',
+                            style: TextStyle(
+                              fontSize: 24,
+                              fontWeight: FontWeight.bold,
+                              color: Colors.black,
+                            ),
+                          ),
                         ),
-                      ),
+                        const SizedBox(height: 12),
+                        const Align(
+                          alignment: Alignment.centerLeft,
+                          child: Text(
+                            'First add your item of clothing to your cart then click below to add your text! One line of text contains 10 characters!',
+                            style: TextStyle(
+                              fontSize: 14,
+                              color: Colors.black87,
+                            ),
+                          ),
+                        ),
+                        const SizedBox(height: 20),
+                        Align(
+                          alignment: Alignment.centerLeft,
+                          child: ElevatedButton(
+                            onPressed: placeholderCallbackForButtons,
+                            style: ElevatedButton.styleFrom(
+                              backgroundColor: const Color(0xFF4d2963),
+                              foregroundColor: Colors.white,
+                              shape: const RoundedRectangleBorder(
+                                borderRadius: BorderRadius.zero,
+                              ),
+                            ),
+                            child: const Text(
+                              'CLICK HERE TO ADD TEXT!',
+                              style: TextStyle(
+                                fontSize: 14,
+                                fontWeight: FontWeight.w600,
+                                letterSpacing: 1,
+                              ),
+                            ),
+                          ),
+                        ),
+                      ],
+                    )
+                  : Row(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        Expanded(
+                          flex: 3,
+                          child: Column(
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: [
+                              const Text(
+                                'Add a Personal Touch',
+                                style: TextStyle(
+                                  fontSize: 24,
+                                  fontWeight: FontWeight.bold,
+                                  color: Colors.black,
+                                ),
+                              ),
+                              const SizedBox(height: 12),
+                              const Text(
+                                'First add your item of clothing to your cart then click below to add your text! One line of text contains 10 characters!',
+                                style: TextStyle(
+                                  fontSize: 14,
+                                  color: Colors.black87,
+                                ),
+                              ),
+                              const SizedBox(height: 20),
+                              ElevatedButton(
+                                onPressed: placeholderCallbackForButtons,
+                                style: ElevatedButton.styleFrom(
+                                  backgroundColor: const Color(0xFF4d2963),
+                                  foregroundColor: Colors.white,
+                                  shape: const RoundedRectangleBorder(
+                                    borderRadius: BorderRadius.zero,
+                                  ),
+                                ),
+                                child: const Text(
+                                  'CLICK HERE TO ADD TEXT!',
+                                  style: TextStyle(
+                                    fontSize: 14,
+                                    fontWeight: FontWeight.w600,
+                                    letterSpacing: 1,
+                                  ),
+                                ),
+                              ),
+                            ],
+                          ),
+                        ),
+                        const SizedBox(width: 40),
+                        Expanded(
+                          flex: 2,
+                          child: Image.asset(
+                            'assets/images/printShack.jpg',
+                            fit: BoxFit.cover,
+                            errorBuilder: (context, error, stackTrace) {
+                              return Container(
+                                color: Colors.grey[300],
+                                height: 200,
+                                child: const Center(
+                                  child: Icon(Icons.image_not_supported,
+                                      color: Colors.grey, size: 50),
+                                ),
+                              );
+                            },
+                          ),
+                        ),
+                      ],
                     ),
-                  ),
-                ],
-              ),
             ),
 
             // Footer
@@ -335,7 +441,7 @@ class ProductSection extends StatelessWidget {
 
     return Container(
       color: Colors.white,
-      padding: EdgeInsets.all(isMobile ? 20.0 : 40.0),
+      padding: EdgeInsets.all(isMobile ? 20.0 : 30.0),
       child: Column(
         children: [
           Text(
