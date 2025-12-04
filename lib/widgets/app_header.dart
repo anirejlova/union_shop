@@ -59,6 +59,9 @@ class _AppHeaderState extends State<AppHeader> {
 
   @override
   Widget build(BuildContext context) {
+    final screenWidth = MediaQuery.of(context).size.width;
+    final isDesktop = screenWidth >= 600;
+
     return Column(
       mainAxisSize: MainAxisSize.min,
       children: [
@@ -108,36 +111,89 @@ class _AppHeaderState extends State<AppHeader> {
                           },
                         ),
                       ),
+                      if (isDesktop) ...[
+                        const SizedBox(width: 24),
+                        TextButton(
+                          onPressed: () => navigateToHome(context),
+                          child: const Text(
+                            'Home',
+                            style: TextStyle(
+                              color: Colors.black87,
+                              fontSize: 14,
+                            ),
+                          ),
+                        ),
+                        TextButton(
+                          onPressed: placeholderCallbackForButtons,
+                          child: const Text(
+                            'Shop',
+                            style: TextStyle(
+                              color: Colors.black87,
+                              fontSize: 14,
+                            ),
+                          ),
+                        ),
+                        TextButton(
+                          onPressed: placeholderCallbackForButtons,
+                          child: const Text(
+                            'The Print Shack',
+                            style: TextStyle(
+                              color: Colors.black87,
+                              fontSize: 14,
+                            ),
+                          ),
+                        ),
+                        TextButton(
+                          onPressed: placeholderCallbackForButtons,
+                          child: const Text(
+                            'SALE!',
+                            style: TextStyle(
+                              color: Colors.black87,
+                              fontSize: 14,
+                            ),
+                          ),
+                        ),
+                        TextButton(
+                          onPressed: () =>
+                              handleMenuNavigation(context, 'about'),
+                          child: const Text(
+                            'About',
+                            style: TextStyle(
+                              color: Colors.black87,
+                              fontSize: 14,
+                            ),
+                          ),
+                        ),
+                      ],
                       const Spacer(),
-                      ConstrainedBox(
-                        constraints: const BoxConstraints(maxWidth: 600),
-                        child: Row(
-                          mainAxisSize: MainAxisSize.min,
-                          children: [
-                            IconButton(
-                              icon: const Icon(Icons.search,
-                                  size: 18, color: Colors.grey),
-                              padding: const EdgeInsets.all(8),
-                              constraints: const BoxConstraints(
-                                  minWidth: 32, minHeight: 32),
-                              onPressed: toggleSearch,
-                            ),
-                            IconButton(
-                              icon: const Icon(Icons.person_outline,
-                                  size: 18, color: Colors.grey),
-                              padding: const EdgeInsets.all(8),
-                              constraints: const BoxConstraints(
-                                  minWidth: 32, minHeight: 32),
-                              onPressed: placeholderCallbackForButtons,
-                            ),
-                            IconButton(
-                              icon: const Icon(Icons.shopping_bag_outlined,
-                                  size: 18, color: Colors.grey),
-                              padding: const EdgeInsets.all(8),
-                              constraints: const BoxConstraints(
-                                  minWidth: 32, minHeight: 32),
-                              onPressed: placeholderCallbackForButtons,
-                            ),
+                      Row(
+                        mainAxisSize: MainAxisSize.min,
+                        children: [
+                          IconButton(
+                            icon: const Icon(Icons.search,
+                                size: 18, color: Colors.grey),
+                            padding: const EdgeInsets.all(8),
+                            constraints: const BoxConstraints(
+                                minWidth: 32, minHeight: 32),
+                            onPressed: toggleSearch,
+                          ),
+                          IconButton(
+                            icon: const Icon(Icons.person_outline,
+                                size: 18, color: Colors.grey),
+                            padding: const EdgeInsets.all(8),
+                            constraints: const BoxConstraints(
+                                minWidth: 32, minHeight: 32),
+                            onPressed: placeholderCallbackForButtons,
+                          ),
+                          IconButton(
+                            icon: const Icon(Icons.shopping_bag_outlined,
+                                size: 18, color: Colors.grey),
+                            padding: const EdgeInsets.all(8),
+                            constraints: const BoxConstraints(
+                                minWidth: 32, minHeight: 32),
+                            onPressed: placeholderCallbackForButtons,
+                          ),
+                          if (!isDesktop)
                             IconButton(
                               icon: const Icon(Icons.menu,
                                   size: 18, color: Colors.grey),
@@ -146,8 +202,7 @@ class _AppHeaderState extends State<AppHeader> {
                                   minWidth: 32, minHeight: 32),
                               onPressed: toggleMenu,
                             ),
-                          ],
-                        ),
+                        ],
                       ),
                     ],
                   ),
@@ -214,77 +269,78 @@ class _AppHeaderState extends State<AppHeader> {
               : const SizedBox.shrink(),
         ),
 
-        // Dropdown Menu
-        AnimatedSize(
-          duration: const Duration(milliseconds: 300),
-          curve: Curves.easeInOut,
-          child: _isMenuOpen
-              ? Container(
-                  width: double.infinity,
-                  color: Colors.white,
-                  child: Column(
-                    children: [
-                      const Divider(height: 1, color: Colors.grey),
-                      InkWell(
-                        onTap: () => handleMenuNavigation(context, 'home'),
-                        child: Container(
-                          padding: const EdgeInsets.symmetric(
-                              vertical: 16, horizontal: 20),
-                          width: double.infinity,
-                          child: const Text('Home',
-                              style: TextStyle(fontSize: 16)),
+        // Dropdown Menu (Mobile only)
+        if (!isDesktop)
+          AnimatedSize(
+            duration: const Duration(milliseconds: 300),
+            curve: Curves.easeInOut,
+            child: _isMenuOpen
+                ? Container(
+                    width: double.infinity,
+                    color: Colors.white,
+                    child: Column(
+                      children: [
+                        const Divider(height: 1, color: Colors.grey),
+                        InkWell(
+                          onTap: () => handleMenuNavigation(context, 'home'),
+                          child: Container(
+                            padding: const EdgeInsets.symmetric(
+                                vertical: 16, horizontal: 20),
+                            width: double.infinity,
+                            child: const Text('Home',
+                                style: TextStyle(fontSize: 16)),
+                          ),
                         ),
-                      ),
-                      const Divider(height: 1, color: Colors.grey),
-                      InkWell(
-                        onTap: () => setState(() => _isMenuOpen = false),
-                        child: Container(
-                          padding: const EdgeInsets.symmetric(
-                              vertical: 16, horizontal: 20),
-                          width: double.infinity,
-                          child: const Text('Shop',
-                              style: TextStyle(fontSize: 16)),
+                        const Divider(height: 1, color: Colors.grey),
+                        InkWell(
+                          onTap: () => setState(() => _isMenuOpen = false),
+                          child: Container(
+                            padding: const EdgeInsets.symmetric(
+                                vertical: 16, horizontal: 20),
+                            width: double.infinity,
+                            child: const Text('Shop',
+                                style: TextStyle(fontSize: 16)),
+                          ),
                         ),
-                      ),
-                      const Divider(height: 1, color: Colors.grey),
-                      InkWell(
-                        onTap: () => setState(() => _isMenuOpen = false),
-                        child: Container(
-                          padding: const EdgeInsets.symmetric(
-                              vertical: 16, horizontal: 20),
-                          width: double.infinity,
-                          child: const Text('The Print Shack',
-                              style: TextStyle(fontSize: 16)),
+                        const Divider(height: 1, color: Colors.grey),
+                        InkWell(
+                          onTap: () => setState(() => _isMenuOpen = false),
+                          child: Container(
+                            padding: const EdgeInsets.symmetric(
+                                vertical: 16, horizontal: 20),
+                            width: double.infinity,
+                            child: const Text('The Print Shack',
+                                style: TextStyle(fontSize: 16)),
+                          ),
                         ),
-                      ),
-                      const Divider(height: 1, color: Colors.grey),
-                      InkWell(
-                        onTap: () => setState(() => _isMenuOpen = false),
-                        child: Container(
-                          padding: const EdgeInsets.symmetric(
-                              vertical: 16, horizontal: 20),
-                          width: double.infinity,
-                          child: const Text('SALE!',
-                              style: TextStyle(fontSize: 16)),
+                        const Divider(height: 1, color: Colors.grey),
+                        InkWell(
+                          onTap: () => setState(() => _isMenuOpen = false),
+                          child: Container(
+                            padding: const EdgeInsets.symmetric(
+                                vertical: 16, horizontal: 20),
+                            width: double.infinity,
+                            child: const Text('SALE!',
+                                style: TextStyle(fontSize: 16)),
+                          ),
                         ),
-                      ),
-                      const Divider(height: 1, color: Colors.grey),
-                      InkWell(
-                        onTap: () => handleMenuNavigation(context, 'about'),
-                        child: Container(
-                          padding: const EdgeInsets.symmetric(
-                              vertical: 16, horizontal: 20),
-                          width: double.infinity,
-                          child: const Text('About',
-                              style: TextStyle(fontSize: 16)),
+                        const Divider(height: 1, color: Colors.grey),
+                        InkWell(
+                          onTap: () => handleMenuNavigation(context, 'about'),
+                          child: Container(
+                            padding: const EdgeInsets.symmetric(
+                                vertical: 16, horizontal: 20),
+                            width: double.infinity,
+                            child: const Text('About',
+                                style: TextStyle(fontSize: 16)),
+                          ),
                         ),
-                      ),
-                      const Divider(height: 1, color: Colors.grey),
-                    ],
-                  ),
-                )
-              : const SizedBox.shrink(),
-        ),
+                        const Divider(height: 1, color: Colors.grey),
+                      ],
+                    ),
+                  )
+                : const SizedBox.shrink(),
+          ),
       ],
     );
   }
