@@ -5,6 +5,7 @@ import 'package:union_shop/pages/placeholder.dart';
 import 'package:union_shop/pages/auth_page.dart';
 import 'package:union_shop/widgets/app_header.dart';
 import 'package:union_shop/widgets/app_footer.dart';
+import 'package:union_shop/widgets/product_dark.dart';
 
 void main() {
   runApp(const UnionShopApp());
@@ -555,47 +556,4 @@ class ProductCard extends StatelessWidget {
   }
 }
 
-class ProductCardDark extends StatelessWidget {
-  final String title;
-  final String imageUrl;
 
-  const ProductCardDark({
-    super.key,
-    required this.title,
-    required this.imageUrl,
-  });
-
-  @override
-  Widget build(BuildContext context) {
-    return GestureDetector(
-      onTap: () {
-        Navigator.pushNamed(context, '/product');
-      },
-      child: Container(
-        decoration: BoxDecoration(
-          image: DecorationImage(
-            image: AssetImage(imageUrl),
-            fit: BoxFit.cover,
-          ),
-        ),
-        child: Container(
-          decoration: BoxDecoration(
-            color: Colors.black.withValues(alpha: 0.4),
-          ),
-          child: Center(
-            child: Text(
-              title,
-              style: const TextStyle(
-                fontSize: 24,
-                fontWeight: FontWeight.bold,
-                color: Colors.white,
-                letterSpacing: 1,
-              ),
-              textAlign: TextAlign.center,
-            ),
-          ),
-        ),
-      ),
-    );
-  }
-}
