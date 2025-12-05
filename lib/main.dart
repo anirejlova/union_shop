@@ -116,7 +116,8 @@ class HomeScreen extends StatelessWidget {
                         ),
                         const SizedBox(height: 32),
                         ElevatedButton(
-                          onPressed: placeholderCallbackForButtons,
+                          onPressed: () =>
+                              Navigator.pushNamed(context, '/shop'),
                           style: ElevatedButton.styleFrom(
                             backgroundColor: const Color(0xFF4d2963),
                             foregroundColor: Colors.white,
@@ -194,7 +195,8 @@ class HomeScreen extends StatelessWidget {
                 ),
               ],
               showViewAllButton: true,
-              onViewAllPressed: placeholderCallbackForButtons,
+              onViewAllPressed: () =>
+                  Navigator.pushNamed(context, '/collection'),
             ),
 
             Container(
@@ -335,7 +337,8 @@ class HomeScreen extends StatelessWidget {
                         Align(
                           alignment: Alignment.centerLeft,
                           child: ElevatedButton(
-                            onPressed: placeholderCallbackForButtons,
+                            onPressed: () =>
+                                Navigator.pushNamed(context, '/placeholder'),
                             style: ElevatedButton.styleFrom(
                               backgroundColor: const Color(0xFF4d2963),
                               foregroundColor: Colors.white,
@@ -381,7 +384,8 @@ class HomeScreen extends StatelessWidget {
                               ),
                               const SizedBox(height: 20),
                               ElevatedButton(
-                                onPressed: placeholderCallbackForButtons,
+                                onPressed: () => Navigator.pushNamed(
+                                    context, '/placeholder'),
                                 style: ElevatedButton.styleFrom(
                                   backgroundColor: const Color(0xFF4d2963),
                                   foregroundColor: Colors.white,
