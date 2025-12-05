@@ -10,10 +10,12 @@ class AppFooter extends StatefulWidget {
 class _AppFooterState extends State<AppFooter> {
   bool _isSearchOpen = false;
   final TextEditingController _searchController = TextEditingController();
+  final TextEditingController _emailController = TextEditingController();
 
   @override
   void dispose() {
     _searchController.dispose();
+    _emailController.dispose();
     super.dispose();
   }
 
@@ -28,6 +30,10 @@ class _AppFooterState extends State<AppFooter> {
 
   void performSearch() {
     debugPrint('Searching for: ${_searchController.text}');
+  }
+
+  void subscribe() {
+    debugPrint('Subscribing email: ${_emailController.text}');
   }
 
   @override
@@ -118,12 +124,7 @@ class _AppFooterState extends State<AppFooter> {
               SizedBox(height: isMobile ? 24 : 32),
               _buildHelpSection(context, isMobile),
               SizedBox(height: isMobile ? 24 : 32),
-              _buildFooterSection(
-                title: 'Latest Offers',
-                content:
-                    'Email address input box will be here with SUBSCRIBE button next to it',
-                isMobile: isMobile,
-              ),
+              _buildNewsletterSection(isMobile),
             ],
           ),
         ),
@@ -169,6 +170,86 @@ class _AppFooterState extends State<AppFooter> {
             ),
           ),
         ),
+      ],
+    );
+  }
+
+  Widget _buildNewsletterSection(bool isMobile) {
+    return Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
+      children: [
+        Text(
+          'Latest Offers',
+          style: TextStyle(
+            fontSize: isMobile ? 16 : 18,
+            fontWeight: FontWeight.bold,
+            color: Colors.black87,
+          ),
+        ),
+        const SizedBox(height: 12),
+        isMobile
+            ? Column(
+                crossAxisAlignment: CrossAxisAlignment.stretch,
+                children: [
+                  TextField(
+                    controller: _emailController,
+                    decoration: InputDecoration(
+                      hintText: 'Email address',
+                      border: OutlineInputBorder(
+                        borderRadius: BorderRadius.circular(4),
+                        borderSide: const BorderSide(color: Colors.grey),
+                      ),
+                      contentPadding: const EdgeInsets.symmetric(
+                          horizontal: 12, vertical: 8),
+                    ),
+                  ),
+                  const SizedBox(height: 8),
+                  ElevatedButton(
+                    onPressed: subscribe,
+                    style: ElevatedButton.styleFrom(
+                      backgroundColor: const Color(0xFF4d2963),
+                      foregroundColor: Colors.white,
+                      padding: const EdgeInsets.symmetric(vertical: 12),
+                      shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(4),
+                      ),
+                    ),
+                    child: const Text('SUBSCRIBE'),
+                  ),
+                ],
+              )
+            : Row(
+                children: [
+                  Expanded(
+                    child: TextField(
+                      controller: _emailController,
+                      decoration: InputDecoration(
+                        hintText: 'Email address',
+                        border: OutlineInputBorder(
+                          borderRadius: BorderRadius.circular(4),
+                          borderSide: const BorderSide(color: Colors.grey),
+                        ),
+                        contentPadding: const EdgeInsets.symmetric(
+                            horizontal: 12, vertical: 8),
+                      ),
+                    ),
+                  ),
+                  const SizedBox(width: 8),
+                  ElevatedButton(
+                    onPressed: subscribe,
+                    style: ElevatedButton.styleFrom(
+                      backgroundColor: const Color(0xFF4d2963),
+                      foregroundColor: Colors.white,
+                      padding: const EdgeInsets.symmetric(
+                          horizontal: 24, vertical: 12),
+                      shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(4),
+                      ),
+                    ),
+                    child: const Text('SUBSCRIBE'),
+                  ),
+                ],
+              ),
       ],
     );
   }
