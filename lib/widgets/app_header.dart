@@ -23,6 +23,11 @@ class _AppHeaderState extends State<AppHeader> {
     Navigator.pushNamedAndRemoveUntil(context, '/', (route) => false);
   }
 
+  void navigateToAuth(BuildContext context) {
+    setState(() => _isMenuOpen = false);
+    Navigator.pushNamed(context, '/auth');
+  }
+
   void toggleMenu() {
     setState(() {
       _isMenuOpen = !_isMenuOpen;
@@ -183,7 +188,7 @@ class _AppHeaderState extends State<AppHeader> {
                             padding: const EdgeInsets.all(8),
                             constraints: const BoxConstraints(
                                 minWidth: 32, minHeight: 32),
-                            onPressed: placeholderCallbackForButtons,
+                            onPressed: () => navigateToAuth(context),
                           ),
                           IconButton(
                             icon: const Icon(Icons.shopping_bag_outlined,
