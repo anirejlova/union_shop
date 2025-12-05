@@ -41,6 +41,8 @@ class _AppHeaderState extends State<AppHeader> {
       navigateToHome(context);
     } else if (route == 'about') {
       Navigator.pushNamed(context, '/about');
+    } else if (route == 'shop') {
+      Navigator.pushNamed(context, '/shop');
     }
   }
 
@@ -129,7 +131,8 @@ class _AppHeaderState extends State<AppHeader> {
                           ),
                         ),
                         TextButton(
-                          onPressed: placeholderCallbackForButtons,
+                          onPressed: () =>
+                              handleMenuNavigation(context, 'shop'),
                           child: const Text(
                             'Shop',
                             style: TextStyle(
