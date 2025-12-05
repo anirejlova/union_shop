@@ -28,6 +28,11 @@ class _AppHeaderState extends State<AppHeader> {
     Navigator.pushNamed(context, '/auth');
   }
 
+  void navigateToCart(BuildContext context) {
+    setState(() => _isMenuOpen = false);
+    Navigator.pushNamed(context, '/cart');
+  }
+
   void toggleMenu() {
     setState(() {
       _isMenuOpen = !_isMenuOpen;
@@ -205,7 +210,7 @@ class _AppHeaderState extends State<AppHeader> {
                             padding: const EdgeInsets.all(8),
                             constraints: const BoxConstraints(
                                 minWidth: 32, minHeight: 32),
-                            onPressed: placeholderCallbackForButtons,
+                            onPressed: () => navigateToCart(context),
                           ),
                           if (!isDesktop)
                             IconButton(
