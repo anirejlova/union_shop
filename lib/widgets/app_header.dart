@@ -43,6 +43,10 @@ class _AppHeaderState extends State<AppHeader> {
       Navigator.pushNamed(context, '/about');
     } else if (route == 'shop') {
       Navigator.pushNamed(context, '/shop');
+    } else if (route == 'printshack') {
+      Navigator.pushNamed(context, '/placeholder');
+    } else if (route == 'sale') {
+      Navigator.pushNamed(context, '/placeholder');
     }
   }
 
@@ -142,7 +146,8 @@ class _AppHeaderState extends State<AppHeader> {
                           ),
                         ),
                         TextButton(
-                          onPressed: placeholderCallbackForButtons,
+                          onPressed: () =>
+                              handleMenuNavigation(context, 'printshack'),
                           child: const Text(
                             'The Print Shack',
                             style: TextStyle(
@@ -152,7 +157,8 @@ class _AppHeaderState extends State<AppHeader> {
                           ),
                         ),
                         TextButton(
-                          onPressed: placeholderCallbackForButtons,
+                          onPressed: () =>
+                              handleMenuNavigation(context, 'sale'),
                           child: const Text(
                             'SALE!',
                             style: TextStyle(
@@ -312,7 +318,8 @@ class _AppHeaderState extends State<AppHeader> {
                         ),
                         const Divider(height: 1, color: Colors.grey),
                         InkWell(
-                          onTap: () => setState(() => _isMenuOpen = false),
+                          onTap: () =>
+                              handleMenuNavigation(context, 'printshack'),
                           child: Container(
                             padding: const EdgeInsets.symmetric(
                                 vertical: 16, horizontal: 20),
@@ -323,7 +330,7 @@ class _AppHeaderState extends State<AppHeader> {
                         ),
                         const Divider(height: 1, color: Colors.grey),
                         InkWell(
-                          onTap: () => setState(() => _isMenuOpen = false),
+                          onTap: () => handleMenuNavigation(context, 'sale'),
                           child: Container(
                             padding: const EdgeInsets.symmetric(
                                 vertical: 16, horizontal: 20),
