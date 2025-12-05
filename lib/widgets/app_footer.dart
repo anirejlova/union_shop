@@ -32,16 +32,16 @@ class _AppFooterState extends State<AppFooter> {
     debugPrint('Searching for: ${_searchController.text}');
   }
 
-  // void subscribe() {
-  //   final email = _emailController.text;
-  //   ScaffoldMessenger.of(context).showSnackBar(
-  //     SnackBar(
-  //       content: Text('Subscribing email: $email'),
-  //       duration: const Duration(seconds: 2),
-  //       behavior: SnackBarBehavior.floating,
-  //     ),
-  //   );
-  // }
+  void subscribe() {
+    final email = _emailController.text;
+    ScaffoldMessenger.of(context).showSnackBar(
+      SnackBar(
+        content: Text('Subscribing email: $email'),
+        duration: const Duration(seconds: 2),
+        behavior: SnackBarBehavior.floating,
+      ),
+    );
+  }
 
   @override
   Widget build(BuildContext context) {
