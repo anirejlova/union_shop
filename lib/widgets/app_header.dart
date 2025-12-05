@@ -298,7 +298,7 @@ class _AppHeaderState extends State<AppHeader> {
                         ),
                         const Divider(height: 1, color: Colors.grey),
                         InkWell(
-                          onTap: () => setState(() => _isMenuOpen = false),
+                          onTap: () => handleMenuNavigation(context, 'shop'),
                           child: Container(
                             padding: const EdgeInsets.symmetric(
                                 vertical: 16, horizontal: 20),
