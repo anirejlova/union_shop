@@ -3,6 +3,7 @@ import 'package:union_shop/pages/product_page.dart';
 import 'package:union_shop/pages/about_page.dart';
 import 'package:union_shop/pages/placeholder.dart';
 import 'package:union_shop/pages/auth_page.dart';
+import 'package:union_shop/pages/collections_page.dart';
 import 'package:union_shop/widgets/app_header.dart';
 import 'package:union_shop/widgets/app_footer.dart';
 import 'package:union_shop/widgets/product_dark.dart';
@@ -32,6 +33,7 @@ class UnionShopApp extends StatelessWidget {
         '/about': (context) => const AboutPage(),
         '/placeholder': (context) => const PlaceholderPage(),
         '/auth': (context) => const AuthPage(),
+        '/shop': (context) => const CollectionsPage(),
       },
     );
   }
@@ -555,5 +557,3 @@ class ProductCard extends StatelessWidget {
     );
   }
 }
-
-
