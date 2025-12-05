@@ -14,7 +14,7 @@ class ProductCardDark extends StatelessWidget {
   Widget build(BuildContext context) {
     return GestureDetector(
       onTap: () {
-        Navigator.pushNamed(context, '/product');
+        Navigator.pushNamed(context, '/collection');
       },
       child: Container(
         decoration: BoxDecoration(
